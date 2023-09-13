@@ -1,6 +1,5 @@
 # HNGxTaskTwo
 
-
 # Project Documentation: Simple REST API for CRUD Operations
 
 ## Table of Contents
@@ -54,22 +53,212 @@ The simplicity of the schema allows for easy management of individual records.
 
 ---
 
-## 4. API Endpoints
+## 4. API Endpoints and Documentation
 
-The API exposes the following endpoints:
+### Standard Formats for Requests and Responses
 
-- **CREATE:** `/api/persons` (HTTP POST)
+#### Create a New Person
 
-  - Creates a new person record.
-- **READ:** `/api/persons/<int:person_id>` (HTTP GET)
+- **Request:**
 
-  - Retrieves details of a specific person by their unique ID.
-- **UPDATE:** `/api/persons/<int:person_id>` (HTTP PUT)
+  - Endpoint: `POST /api/persons`
+  - Request Body:
+    ```json
+    {
+      "name": "John Doe"
+    }
+    ```
+  - Content-Type: `application/json`
+- **Response (Success):**
 
-  - Modifies details of an existing person using their unique ID.
-- **DELETE:** `/api/persons/<int:person_id>` (HTTP DELETE)
+  - Status Code: `201 Created`
+  - Response Body:
+    ```json
+    {
+      "message": "Person created successfully",
+      "id": 1
+    }
+    ```
+- **Response (Error - Missing Name):**
 
-  - Deletes a person record using their unique ID.
+  - Status Code: `400 Bad Request`
+  - Response Body:
+    ```json
+    {
+      "error": "Name is required"
+    }
+    ```
+- **Response (Error - Invalid Data Type):**
+
+  - Status Code: `400 Bad Request`
+  - Response Body:
+    ```json
+    {
+      "error": "Name should be a string"
+    }
+    ```
+
+#### Get Person Details
+
+- **Request:**
+
+  - Endpoint: `GET /api/persons/<person_id>`
+- **Response (Success):**
+
+  - Status Code: `200 OK`
+  - Response Body:
+    ```json
+    {
+      "id": 1,
+      "name": "John Doe"
+    }
+    ```
+- **Response (Error - Person Not Found):**
+
+  - Status Code: `404 Not Found`
+  - Response Body:
+    ```json
+    {
+      "error": "Person not found"
+    }
+    ```
+
+#### Update Person Details
+
+- **Request:**
+
+  - Endpoint: `PUT /api/persons/<person_id>`
+  - Request Body:
+    ```json
+    {
+      "name": "Updated John Doe"
+    }
+    ```
+  - Content-Type: `application/json`
+- **Response (Success):**
+
+  - Status Code: `200 OK`
+  - Response Body:
+    ```json
+    {
+      "message": "Person updated successfully"
+    }
+    ```
+- **Response (Error - Missing Name):**
+
+  - Status Code: `400 Bad Request`
+  - Response Body:
+    ```json
+    {
+      "error": "Name is required"
+    }
+    ```
+- **Response (Error - Person Not Found):**
+
+  - Status Code: `404 Not Found`
+  - Response Body:
+    ```json
+    {
+      "error": "Person not found"
+    }
+    ```
+
+#### Delete a Person
+
+- **Request:**
+
+  - Endpoint: `DELETE /api/persons/<person_id>`
+- **Response (Success):**
+
+  - Status Code: `200 OK`
+  - Response Body:
+    ```json
+    {
+      "message": "Person deleted successfully"
+    }
+    ```
+- **Response (Error - Person Not Found):**
+
+  - Status Code: `404 Not Found`
+  - Response Body:
+    ```json
+    {
+      "error": "Person not found"
+    }
+    ```
+
+### Sample Usage
+
+#### Creating a New Person
+
+To create a new person, make a POST request to the `/api/persons` endpoint with the person's name in the request body.
+
+Example using cURL:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name": "John Doe"}' https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons
+```
+
+#### Getting Person Details
+
+To retrieve details of a person, make a GET request to the `/api/persons/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to retrieve.
+
+Example using cURL:
+
+```bash
+curl https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+```
+
+#### Updating Person Details
+
+To update a person's details, make a PUT request to the `/api/persons/<person_id>` endpoint with the updated data in the request body.
+
+Example using cURL:
+
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"name": "Updated John Doe"}' https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+```
+
+#### Deleting a Person
+
+To delete a person, make a DELETE request to the `/api/persons/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to delete.
+
+Example using cURL:
+
+```bash
+curl -X DELETE https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+```
+
+### Known Limitations and Assumptions
+
+- The API assumes that the `name` field for a person should be a string. Other data types are not allowed.
+
+### Setup and Deployment Instructions
+
+To set up and deploy the API locally or on a server, follow these general steps:
+
+1. Clone the repository from GitHub:
+
+   ```bash
+   git clone https://github.com/Gabby1937/HNGxTaskTwo.git
+   ```
+2. Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Configure the database connection in your Flask app (e.g., update the `SQLALCHEMY_DATABASE_URI` in `app.py`).
+4. Run the Flask application:
+
+   ```bash
+   python app.py
+
+   ```
+
+```
+
+The API will be accessible at `http://localhost:5000` by default. You can deploy it to a production server by following server-specific deployment instructions.
+```
 
 ---
 
@@ -110,7 +299,7 @@ Project documentation is provided to assist users in understanding and using the
 
 ## 9. Hosting
 
-The API can be hosted on a server for remote accessibility. Hosted endpoints should follow a URL structure like `https://yourdomain.com/api`. It is essential to test the hosted API extensively using various testing tools to ensure its accessibility before production use.
+The API can be hosted on a server for remote accessibility. Hosted endpoints should follow a URL structure like `https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api`. It is essential to test the hosted API extensively using various testing tools to ensure its accessibility before production use.
 
 ---
 
