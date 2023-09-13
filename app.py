@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://master:ekka@localhost:5432/HNGxtasktwodb'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://master:ekka@localhost:5432/HNGxtasktwodb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://lxamjnofkexhwg:297496fa748dfba9d88b5fb241cd6e647e5318d0fcfbfc8003b7f51df4b1d39b@ec2-3-210-173-88.compute-1.amazonaws.com:5432/d8do2osfmr5e5q'
+#"postgres://lxamjnofkexhwg:297496fa748dfba9d88b5fb241cd6e647e5318d0fcfbfc8003b7f51df4b1d39b@ec2-3-210-173-88.compute-1.amazonaws.com:5432/d8do2osfmr5e5q"
 db = SQLAlchemy(app)
 
 # Define your SQLAlchemy models (e.g., Person) here.
