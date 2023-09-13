@@ -217,7 +217,8 @@ To update a person's details, make a PUT request to the `/api/persons/<person_id
 Example using cURL:
 
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d '{"name": "Updated John Doe"}' https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+curl -X PUT -H "Content-Type: application/json" -d "{\"name\": \"Updated John Doe\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+
 ```
 
 #### Deleting a Person
