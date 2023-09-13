@@ -1,6 +1,3 @@
-# HNGxTaskTwo
-
-
 # Project Documentation: Simple REST API for CRUD Operations
 
 ## Table of Contents
