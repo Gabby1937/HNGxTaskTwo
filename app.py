@@ -34,6 +34,9 @@ def create_person():
 
     if not name:
         return jsonify({'error': 'Name is required'}), 400
+    
+    if not isinstance(name, str):
+        return jsonify({'error': 'Name should be a string'}), 400
 
     person = Person(name=name)
     db.session.add(person)
