@@ -36,7 +36,7 @@ class APITestCase(unittest.TestCase):
         db.session.add(person)
         db.session.commit()
 
-        response = self.app.get(f'/api/persons/{person.id}')
+        response = self.app.get(f'/api/{person.id}')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
@@ -44,7 +44,7 @@ class APITestCase(unittest.TestCase):
         self.assertEqual(data['name'], person.name)
 
     def test_get_person_not_found(self):
-        response = self.app.get('/api/persons/999')
+        response = self.app.get('/api/999')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 404)
@@ -55,7 +55,7 @@ class APITestCase(unittest.TestCase):
         db.session.add(person)
         db.session.commit()
 
-        response = self.app.put(f'/api/persons/{person.id}', data=json.dumps({'name': 'Updated Bob'}), content_type='application/json')
+        response = self.app.put(f'/api/{person.id}', data=json.dumps({'name': 'Updated Bob'}), content_type='application/json')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
@@ -69,7 +69,7 @@ class APITestCase(unittest.TestCase):
         db.session.add(person)
         db.session.commit()
 
-        response = self.app.delete(f'/api/persons/{person.id}')
+        response = self.app.delete(f'/api/{person.id}')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 200)
@@ -79,7 +79,7 @@ class APITestCase(unittest.TestCase):
         self.assertIsNone(deleted_person)
 
     def test_delete_person_not_found(self):
-        response = self.app.delete('/api/persons/999')
+        response = self.app.delete('/api/999')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 404)

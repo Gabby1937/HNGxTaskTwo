@@ -62,7 +62,7 @@ The simplicity of the schema allows for easy management of individual records.
 
 - **Request:**
 
-  - Endpoint: `POST /api/persons`
+  - Endpoint: `POST /api`
   - Request Body:
     ```json
     {
@@ -103,7 +103,7 @@ The simplicity of the schema allows for easy management of individual records.
 
 - **Request:**
 
-  - Endpoint: `GET /api/persons/<person_id>`
+  - Endpoint: `GET /api/<person_id>`
 - **Response (Success):**
 
   - Status Code: `200 OK`
@@ -128,7 +128,7 @@ The simplicity of the schema allows for easy management of individual records.
 
 - **Request:**
 
-  - Endpoint: `PUT /api/persons/<person_id>`
+  - Endpoint: `PUT /api/<person_id>`
   - Request Body:
     ```json
     {
@@ -168,7 +168,7 @@ The simplicity of the schema allows for easy management of individual records.
 
 - **Request:**
 
-  - Endpoint: `DELETE /api/persons/<person_id>`
+  - Endpoint: `DELETE /api/<person_id>`
 - **Response (Success):**
 
   - Status Code: `200 OK`
@@ -192,44 +192,44 @@ The simplicity of the schema allows for easy management of individual records.
 
 #### Creating a New Person
 
-To create a new person, make a POST request to the `/api/persons` endpoint with the person's name in the request body.
+To create a new person, make a POST request to the `/api` endpoint with the person's name in the request body.
 
 Example using cURL:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Benald\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Benald\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api
 
 ```
 
 #### Getting Person Details
 
-To retrieve details of a person, make a GET request to the `/api/persons/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to retrieve.
+To retrieve details of a person, make a GET request to the `/api/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to retrieve.
 
 Example using cURL:
 
 ```bash
-curl https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+curl https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/1
 ```
 
 #### Updating Person Details
 
-To update a person's details, make a PUT request to the `/api/persons/<person_id>` endpoint with the updated data in the request body.
+To update a person's details, make a PUT request to the `/api/<person_id>` endpoint with the updated data in the request body.
 
 Example using cURL:
 
 ```bash
-curl -X PUT -H "Content-Type: application/json" -d "{\"name\": \"Updated John Doe\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+curl -X PUT -H "Content-Type: application/json" -d "{\"name\": \"Updated John Doe\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/1
 
 ```
 
 #### Deleting a Person
 
-To delete a person, make a DELETE request to the `/api/persons/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to delete.
+To delete a person, make a DELETE request to the `/api/<person_id>` endpoint, where `<person_id>` is the ID of the person you want to delete.
 
 Example using cURL:
 
 ```bash
-curl -X DELETE https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons/1
+curl -X DELETE https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/1
 ```
 
 ### Known Limitations and Assumptions
