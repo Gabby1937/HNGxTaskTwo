@@ -27,7 +27,7 @@ class Person(db.Model):
 ##############################
 
 # CREATE
-@app.route('/api/persons', methods=['POST'])
+@app.route('/api', methods=['POST'])
 def create_person():
     data = request.json
     name = data.get('name')

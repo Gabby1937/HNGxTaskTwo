@@ -18,14 +18,14 @@ class APITestCase(unittest.TestCase):
         self.app_context.pop()  # Pop the application context
 
     def test_create_person(self):
-        response = self.app.post('/api/persons', data=json.dumps({'name': 'John Doe'}), content_type='application/json')
+        response = self.app.post('/api', data=json.dumps({'name': 'John Doe'}), content_type='application/json')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(data['message'], 'Person created successfully')
 
     def test_create_person_missing_name(self):
-        response = self.app.post('/api/persons', data=json.dumps({}), content_type='application/json')
+        response = self.app.post('/api', data=json.dumps({}), content_type='application/json')
         data = json.loads(response.data.decode())
 
         self.assertEqual(response.status_code, 400)

@@ -61,7 +61,7 @@ The simplicity of the schema allows for easy management of individual records.
 
 - **Request:**
 
-  - Endpoint: `POST /api/persons`
+  - Endpoint: `POST /api`
   - Request Body:
     ```json
     {
@@ -196,7 +196,7 @@ To create a new person, make a POST request to the `/api/persons` endpoint with 
 Example using cURL:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Benald\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api/persons
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Benald\"}" https://hngxtasktwobybaronjohn-d14ce0cf8e05.herokuapp.com/api
 
 ```
 
